@@ -34,14 +34,14 @@ def search_and_download(query: str, target_path: str, max_number_images: int):
     wd.get(search_url.format(q=query))
 
     #Scroll and charge the entire page
-    """for __ in range(10):
+    for __ in range(10):
         # multiple scrolls needed to show all 400 images
         wd.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(2)
         # to load next 400 images
         #wd.find_element_by_class_name("mye4qd")
         button_more =  wd.find_element_by_css_selector("input.mye4qd")
-        wd.execute_script("document.querySelector('.mye4qd').click();")"""
+        wd.execute_script("document.querySelector('.mye4qd').click();")
 
     #search all images thumbmails
     elements = wd.find_elements_by_css_selector("img.rg_i.Q4LuWd")
@@ -84,7 +84,7 @@ def search_and_download(query: str, target_path: str, max_number_images: int):
 
 
 
-    with open("log_"+"_".join(query.lower().split(" "))+".csv", 'w', newline='') as file:
+    with open(output_path + "/Log_csv_files/log_" + "_".join(query.lower().split(" "))+".csv", 'w', newline='') as file:
         writer = csv.writer(file, delimiter=';')
         writer.writerows(download_results)
 
@@ -93,7 +93,8 @@ def search_and_download(query: str, target_path: str, max_number_images: int):
 
 # Max images = 0 to download all images
 max_images = 10
-output_path = "C:/Users/BABAN/PycharmProjects/pythonProject_images/images_dataset"
+# Change to your suitable folder path
+output_path = "C:/Users/BABAN/Desktop/MyFoodDataset"
 search_terms = [
     "Okok",
     "Okok cameroun",
